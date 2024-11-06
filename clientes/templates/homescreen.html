@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a la Veterinaria</title>
+    <style>
+        /* Paleta de colores */
+        :root {
+            --fondo-principal: #EAC195;
+            --texto-claro: #FFFFFF;
+            --texto-oscuro: #0F132E;
+            --azul-oscuro: #0F132E;
+            --azul-medio: #19274E;
+            --azul-claro: #536D88;
+            --boton-registro: #B49B85;
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: var(--texto-claro);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: var(--azul-oscuro);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--azul-medio);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .button {
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: var(--texto-claro);
+        }
+
+        .button-login {
+            background-color: var(--azul-oscuro);
+        }
+
+        .button-login:hover {
+            background-color: var(--azul-medio);
+        }
+
+        .button-register {
+            background-color: var(--boton-registro);
+        }
+
+        .button-register:hover {
+            background-color: var(--azul-claro);
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--texto-oscuro);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a Huellas Felices</h1>
+        <p>Nos alegra verte. Cuida de tu mascota con nosotros.</p>
+        <div class="button-container">
+            <button class="button button-login">Iniciar Sesión</button>
+            <button class="button button-register" onclick="window.location.href='{% url 'crear_cliente' %}'">Registrar Usuario</button>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Veterinaria. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

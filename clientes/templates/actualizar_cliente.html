@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Cliente</title>
+    <style>
+        /* Paleta de colores */
+        :root {
+            --fondo-claro: #EAC195;
+            --encabezado-oscuro: #0F132E;
+            --area-formulario: #536D88;
+            --bordes-campos: #19274E;
+            --boton: #B49B85;
+            --texto: #0F132E;
+            --mensaje-exito: #4CAF50;
+            --mensaje-error: #F44336;
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo-claro);
+            margin: 0;
+            padding: 1rem;
+            color: var(--texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem;
+            background-color: var(--area-formulario);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--encabezado-oscuro);
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--encabezado-oscuro);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"] {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--bordes-campos);
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--texto);
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-submit,
+        .btn-cancel {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit {
+            background-color: var(--encabezado-oscuro);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--boton);
+        }
+
+        .btn-cancel {
+            background-color: var(--mensaje-error);
+        }
+
+        .btn-cancel:hover {
+            background-color: #b71c1c;
+        }
+
+        .message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .message.success {
+            background-color: var(--mensaje-exito);
+            color: white;
+        }
+
+        .message.error {
+            background-color: var(--mensaje-error);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Actualizar Cliente</h2>
+
+        <!-- Mensaje de éxito o error -->
+        {% if message %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="cedula">Cédula</label>
+            <input type="text" id="cedula" name="cedula" value="{{ cliente.cedula }}" readonly>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="{{ cliente.nombre }}" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" value="{{ cliente.apellido }}" required>
+
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" name="telefono" value="{{ cliente.telefono }}" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ cliente.email }}" required>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn-submit">Guardar Cambios</button>
+                <a href="{% url 'listar_clientes' %}" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

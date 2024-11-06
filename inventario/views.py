@@ -8,3 +8,4 @@ def lista_productos(request):
 # Vista para mostrar detalles de un producto
 def detalle_producto(request, producto_id):
     return HttpResponse(f"Detalles del producto con ID {producto_id}")
+

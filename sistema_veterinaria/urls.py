@@ -17,13 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.http import HttpResponse
+from clientes.views import home
 
-def home(request):
-    return HttpResponse('Bienvenido a la Veterinaria')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inventario/',include('inventario.urls')),
-    path('', home),
+    path('', home, name= 'home'),
     path('ventas/', include('ventas.urls')),          
     path('compras/', include('compras.urls')),       
     path('clientes/', include('clientes.urls')),     

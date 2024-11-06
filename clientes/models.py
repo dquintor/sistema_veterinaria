@@ -8,6 +8,9 @@ class Cliente(models.Model):
     email = models.EmailField(unique=True)
     telefono = models.CharField(max_length=15, null=True, blank=True)
     direccion = models.TextField(null=True, blank=True)
+    edad = models.PositiveIntegerField(null=True, blank=True)
+    movil = models.CharField(max_length=15, blank=True, null=True)
+    contrasena = models.CharField(max_length=128, blank=True, null=True)
     
     def __str__(self):
         return f"{self.nombre} {self.apellido}"

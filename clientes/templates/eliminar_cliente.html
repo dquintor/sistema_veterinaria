@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Cliente</title>
+    <style>
+        /* Paleta de colores */
+        :root {
+            --fondo-claro: #EAC195;
+            --encabezado-oscuro: #0F132E;
+            --area-formulario: #536D88;
+            --bordes-campos: #19274E;
+            --boton: #B49B85;
+            --texto: #0F132E;
+            --mensaje-error: #F44336;
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo-claro);
+            margin: 0;
+            padding: 1rem;
+            color: var(--texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: var(--area-formulario);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--encabezado-oscuro);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--texto);
+        }
+
+        /* Botones */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-delete {
+            background-color: var(--mensaje-error);
+        }
+
+        .btn-delete:hover {
+            background-color: #b71c1c;
+        }
+
+        .btn-cancel {
+            background-color: var(--boton);
+        }
+
+        .btn-cancel:hover {
+            background-color: var(--encabezado-oscuro);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Eliminar Cliente</h2>
+        <p>¿Estás seguro de que deseas eliminar a <strong>{{ cliente.nombre }} {{ cliente.apellido }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-delete">Sí, eliminar</button>
+            <a href="{% url 'listar_clientes' %}" class="btn btn-cancel">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
